@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefany Prodossimo | Arquitetura</title>
+
+    <link rel="icon" type="image/png" href="favicon.jpeg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#faf9f8',
+                            100: '#f3f0ec',
+                            200: '#e5ddd3',
+                            300: '#d1c1b1',
+                            400: '#bba08a',
+                            500: '#a88569',
+                            600: '#946f55',
+                            700: '#7a5a47',
+                            800: '#654c3d',
+                            900: '#533f34',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: ''; position: absolute;
+            width: 0; height: 1px;
+            bottom: -4px; left: 0;
+            background-color: #7a5a47;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .perspective-container { perspective: 2000px; }
+        .page-turn-out {
+            transform-origin: left center;
+            animation: turnPageOut 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+        }
+        @keyframes turnPageOut {
+            0% { transform: rotateY(0deg); opacity: 1; filter: brightness(1); }
+            50% { opacity: 1; filter: brightness(0.5); }
+            100% { transform: rotateY(-110deg); opacity: 0; filter: brightness(0); }
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .carousel-item img { transition: transform 0.5s ease; }
+        .carousel-item:hover img { transform: scale(1.03); }
+    </style>
+</head>
+<body class="font-sans text-brand-900 bg-brand-50 antialiased selection:bg-brand-200 selection:text-brand-900">
+
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#inicio" class="scroll-link text-xl md:text-2xl font-serif tracking-wider text-brand-900 uppercase font-semibold drop-shadow-sm">
+                S. Prodossimo
+            </a>
+            
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-brand-800">
+                <a href="#inicio" class="scroll-link nav-link hover:text-brand-600 transition-colors text-white mix-blend-difference">Início</a>
+                <a href="#sobre" class="scroll-link nav-link hover:text-brand-600 transition-colors text-white mix-blend-difference">Sobre</a>
+                <a href="#projetos" class="scroll-link nav-link hover:text-brand-600 transition-colors text-white mix-blend-difference">Projetos</a>
+                <a href="#servicos" class="scroll-link nav-link hover:text-brand-600 transition-colors text-white mix-blend-difference">Serviços</a>
+                <a href="#contato" class="scroll-link nav-link hover:text-brand-600 transition-colors text-white mix-blend-difference">Contato</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-white mix-blend-difference focus:outline-none">
+                <i class="ph ph-list text-3xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-brand-50 shadow-lg border-t border-brand-200 py-6 px-6 flex flex-col space-y-4 text-center md:hidden">
+            <a href="#inicio" class="scroll-link text-brand-800 uppercase tracking-widest text-sm py-2 mobile-link">Início</a>
+            <a href="#sobre" class="scroll-link text-brand-800 uppercase tracking-widest text-sm py-2 mobile-link">Sobre</a>
+            <a href="#projetos" class="scroll-link text-brand-800 uppercase tracking-widest text-sm py-2 mobile-link">Projetos</a>
+            <a href="#servicos" class="scroll-link text-brand-800 uppercase tracking-widest text-sm py-2 mobile-link">Serviços</a>
+            <a href="#contato" class="scroll-link text-brand-800 uppercase tracking-widest text-sm py-2 mobile-link">Contato</a>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden bg-brand-900 perspective-container">
+        
+        <div id="hero-slider" class="absolute inset-0 w-full h-full z-0">
+            <img src="stefany pb.jpeg" alt="Arquiteta Stefany" class="hero-slide absolute inset-0 w-full h-full object-cover object-top z-30">
+            <img src="perfil.png" alt="Arquiteta Stefany" class="hero-slide absolute inset-0 w-full h-full object-cover object-center z-20 hidden">
+            <img src="sala animada.jpeg" alt="Projeto 1" class="hero-slide absolute inset-0 w-full h-full object-cover object-center z-20 hidden">
+            <img src="banheiro rosa.jpeg" alt="Projeto 2" class="hero-slide absolute inset-0 w-full h-full object-cover object-center z-10 hidden">
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/30 z-40 pointer-events-none"></div>
+        
+        <div class="relative z-50 w-full px-6 max-w-6xl mx-auto text-left md:text-center text-white mt-16 pointer-events-none">
+            <h2 class="text-xs md:text-sm uppercase tracking-[0.3em] mb-4 md:mb-6 opacity-90 text-brand-200">Stefany Prodossimo Arquitetura</h2>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight mb-8 drop-shadow-2xl max-w-4xl mx-auto">
+                Arquitetura funcional e sofisticada que seu <span class="italic text-brand-300 font-light">sonho merece.</span>
+            </h1>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pointer-events-auto">
+                <a href="#sobre" class="scroll-link inline-block bg-white text-brand-900 px-8 py-4 uppercase tracking-widest text-xs font-medium hover:bg-brand-200 transition-colors duration-300 text-center">
+                    Conheça a Arquiteta
+                </a>
+                <a href="#projetos" class="scroll-link inline-block border border-white text-white px-8 py-4 uppercase tracking-widest text-xs hover:bg-white hover:text-brand-900 transition-colors duration-300 text-center backdrop-blur-sm">
+                    Ver Portfólio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 bg-brand-50">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative max-w-md mx-auto lg:mx-0">
+                        <div class="absolute inset-0 bg-brand-300 transform translate-x-4 translate-y-4 rounded-sm"></div>
+                        <img src="perfil dois.jpeg" alt="Arquiteta Stefany Prodossimo" class="relative z-10 w-full h-auto object-cover rounded-sm shadow-xl aspect-[4/5]">
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2">
+                    <span class="uppercase tracking-widest text-brand-500 text-xs font-semibold mb-2 block">O Estúdio</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-brand-900 mb-6">Sobre a Arquiteta</h2>
+                    <p class="text-brand-700 leading-relaxed mb-4 text-lg font-light">
+                        Sou <strong class="font-medium text-brand-900">Stefany Prodossimo</strong>, arquiteta e urbanista formada pela <strong class="font-medium text-brand-900">UTFPR</strong>. Para mim, projetar é dar forma a experiências e traduzir a essência de quem habita cada lugar.
+                    </p>
+                    <p class="text-brand-700 leading-relaxed mb-6 text-lg font-light">
+                        Atuo com foco em <strong class="font-medium text-brand-900">projetos residenciais, reformas e projetos legais</strong> sempre com o compromisso de transformar sonhos em realidades tangíveis. 
+                    </p>
+                    <p class="text-brand-700 leading-relaxed mb-6 text-lg font-light">
+                        Acredito que um projeto impecável nasce do equilíbrio entre a sensibilidade artística e o rigor técnico, garantindo que a funcionalidade e a beleza caminhem sempre juntas.
+                    </p>
+                    <p class="text-brand-700 leading-relaxed mb-6 text-lg font-light">
+                        Meu foco é entregar uma arquitetura funcional e sofisticada, para que seu sonho se torne uma realidade impecável.
+                    </p>
+
+                    <div class="mb-8 border-t border-brand-200 pt-6 mt-6">
+                        <span class="text-xs uppercase tracking-widest text-brand-500 mb-3 block">Ferramentas & Tecnologias</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-brand-100 text-brand-800 text-xs uppercase tracking-wider rounded-sm">SketchUp</span>
+                            <span class="px-4 py-2 bg-brand-100 text-brand-800 text-xs uppercase tracking-wider rounded-sm">Revit</span>
+                            <span class="px-4 py-2 bg-brand-100 text-brand-800 text-xs uppercase tracking-wider rounded-sm">AutoCAD</span>
+                            <span class="px-4 py-2 bg-brand-100 text-brand-800 text-xs uppercase tracking-wider rounded-sm">Archicad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12 mb-12 flex justify-between items-end">
+            <div>
+                <span class="uppercase tracking-widest text-brand-500 text-xs font-semibold mb-2 block">Portfólio</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-900">Projetos Selecionados</h2>
+            </div>
+            
+            <div class="hidden md:flex space-x-3">
+                <button onclick="scrollCarousel(-1)" class="w-12 h-12 rounded-full border border-brand-300 flex items-center justify-center text-brand-900 hover:bg-brand-900 hover:text-white transition-colors">
+                    <i class="ph ph-arrow-left text-xl"></i>
+                </button>
+                <button onclick="scrollCarousel(1)" class="w-12 h-12 rounded-full border border-brand-300 flex items-center justify-center text-brand-900 hover:bg-brand-900 hover:text-white transition-colors">
+                    <i class="ph ph-arrow-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="w-full pl-6 md:pl-12">
+            <div id="projetos-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar cursor-grab active:cursor-grabbing">
+                <div class="carousel-item snap-center md:snap-start shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[400px] md:h-[600px] overflow-hidden rounded-sm bg-brand-100">
+                    <img src="banheiro rosa.jpeg" alt="Projeto" class="w-full h-full object-cover">
+                </div>
+                <div class="carousel-item snap-center md:snap-start shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[400px] md:h-[600px] overflow-hidden rounded-sm bg-brand-100">
+                    <img src="sala.jpeg" alt="Projeto" class="w-full h-full object-cover">
+                </div>
+                <div class="carousel-item snap-center md:snap-start shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[400px] md:h-[600px] overflow-hidden rounded-sm bg-brand-100">
+                    <img src="sala animada.jpeg" alt="Projeto" class="w-full h-full object-cover">
+                </div>
+                <div class="carousel-item snap-center md:snap-start shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[400px] md:h-[600px] overflow-hidden rounded-sm bg-brand-100">
+                    <img src="apartamento.jpeg" alt="Projeto" class="w-full h-full object-cover pr-6 md:pr-12">
+                </div>
+            </div>
+            <p class="text-brand-400 text-xs uppercase tracking-widest mt-2 md:hidden">← Deslize para ver mais →</p>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-24 bg-brand-100">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <span class="uppercase tracking-widest text-brand-500 text-xs font-semibold mb-2 block">O que fazemos</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-900">Áreas de Atuação</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Serviço 1: Projeto Arquitetônico -->
+                <div class="bg-brand-50 p-10 border border-brand-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-300 transition-colors">
+                        <i class="ph-light ph-house-line text-3xl text-brand-800"></i>
+                    </div>
+                    <h3 class="text-xl font-serif mb-4 text-brand-900">Projeto Arquitetônico</h3>
+                    <p class="text-brand-700 font-light text-sm leading-relaxed">Concepção de projetos residenciais e comerciais completos, refletindo sua personalidade e priorizando o conforto e a funcionalidade.</p>
+                </div>
+                
+                <!-- Serviço 2: Projeto de Interiores -->
+                <div class="bg-brand-50 p-10 border border-brand-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-300 transition-colors">
+                        <i class="ph-light ph-armchair text-3xl text-brand-800"></i>
+                    </div>
+                    <h3 class="text-xl font-serif mb-4 text-brand-900">Projeto de Interiores</h3>
+                    <p class="text-brand-700 font-light text-sm leading-relaxed">Transformação de ambientes com escolha detalhada de acabamentos, mobiliário, paleta de cores e projeto de iluminação.</p>
+                </div>
+
+                <!-- Serviço 3: Projeto Legal -->
+                <div class="bg-brand-50 p-10 border border-brand-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-300 transition-colors">
+                        <i class="ph-light ph-file-text text-3xl text-brand-800"></i>
+                    </div>
+                    <h3 class="text-xl font-serif mb-4 text-brand-900">Projeto Legal</h3>
+                    <p class="text-brand-700 font-light text-sm leading-relaxed">Aprovação de projetos em prefeituras, emissão de alvarás, desmembramentos e toda documentação técnica necessária.</p>
+                </div>
+
+                <!-- Serviço 4: Projetos B2B -->
+                <div class="bg-brand-50 p-10 border border-brand-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-300 transition-colors">
+                        <i class="ph-light ph-buildings text-3xl text-brand-800"></i>
+                    </div>
+                    <h3 class="text-xl font-serif mb-4 text-brand-900">Colaboração Inter-Escritórios</h3>
+                    <p class="text-brand-700 font-light text-sm leading-relaxed">Suporte técnico especializado para escritórios de arquitetura. Atuamos como braço direito em demandas de alta complexidade, garantindo entregas rigorosas, detalhamento técnico e agilidade para que seu escritório nunca pare de crescer.</p>
+                </div>
+
+                <!-- Serviço 5: Reformas -->
+                <div class="bg-brand-50 p-10 border border-brand-200 hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-brand-200 rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-300 transition-colors">
+                        <i class="ph-light ph-hammer text-3xl text-brand-800"></i>
+                    </div>
+                    <h3 class="text-xl font-serif mb-4 text-brand-900">Reformas</h3>
+                    <p class="text-brand-700 font-light text-sm leading-relaxed">Transformação total ou parcial de espaços existentes. Revitalizamos ambientes unindo estética moderna e viabilidade técnica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-brand-800 text-brand-50">
+        <div class="container mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-16">
+            <div class="w-full lg:w-1/3">
+                <span class="uppercase tracking-widest text-brand-300 text-xs font-semibold mb-2 block">Vamos conversar?</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-white mb-8">Entre em Contato</h2>
+                <p class="text-brand-200 font-light mb-10 leading-relaxed">
+                    Pronto para ter a arquitetura funcional e sofisticada que o seu sonho merece? Me envie uma mensagem detalhando o seu projeto.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <i class="ph-light ph-envelope-simple text-2xl text-brand-300 mt-1"></i>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-brand-400 mb-1">E-mail</span>
+                            <a href="mailto:arq.stefanyprodossimo@gmail.com" class="hover:text-white transition-colors">arq.stefanyprodossimo@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <i class="ph-light ph-whatsapp-logo text-2xl text-brand-300 mt-1"></i>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-brand-400 mb-1">WhatsApp</span>
+                            <a href="https://wa.me/5541984586576" target="_blank" class="hover:text-white transition-colors">+55 (41) 98458-6576</a>
+                        </div>
+                    </div>
+                    <!-- Redes Sociais alinhadas abaixo do Whats -->
+                    <div class="flex items-start space-x-4">
+                        <i class="ph-light ph-share-network text-2xl text-brand-300 mt-1"></i>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider text-brand-400 mb-1">Redes Sociais</span>
+                            <div class="flex space-x-4 pt-1">
+                                <a href="https://www.instagram.com/arq.steprodossimo/" target="_blank" class="hover:text-white transition-colors"><i class="ph ph-instagram-logo text-2xl"></i></a>
+                                <a href="https://www.linkedin.com/in/stefany-prodossimo-370b67168/" target="_blank" class="hover:text-white transition-colors"><i class="ph ph-linkedin-logo text-2xl"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full lg:w-2/3 bg-white p-8 md:p-12 shadow-2xl rounded-sm">
+                
+                <form id="form-whatsapp" class="space-y-6 text-brand-900">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-brand-600 mb-2">Nome Completo</label>
+                            <input type="text" id="nome-cliente" required class="w-full border-b border-brand-300 py-2 focus:outline-none focus:border-brand-800 transition-colors bg-transparent" placeholder="Ex: Maria Silva">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-brand-600 mb-2">E-mail</label>
+                            <input type="email" id="email-cliente" required class="w-full border-b border-brand-300 py-2 focus:outline-none focus:border-brand-800 transition-colors bg-transparent" placeholder="seu@email.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-brand-600 mb-2">Assunto / Interesse</label>
+                        <select id="assunto-cliente" required class="w-full border-b border-brand-300 py-2 focus:outline-none focus:border-brand-800 transition-colors bg-transparent appearance-none">
+                            <option value="" disabled selected>O que você procura?</option>
+                            <option value="Projeto Arquitetonico">Projeto Arquitetonico</option>
+                            <option value="Projeto de Interiores">Projeto de Interiores</option>
+                            <option value="Projeto Legal">Projeto Legal</option>
+                            <option value="Colaboração Inter-Escritórios">Colaboração Inter-Escritórios</option>
+                            <option value="Reforma">Reforma</option>
+                            <option value="Outro">Outro assunto</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-brand-600 mb-2">Sua Mensagem <span class="text-brand-400 lowercase">(Opcional)</span></label>
+                        <textarea id="mensagem-cliente" rows="4" class="w-full border-b border-brand-300 py-2 focus:outline-none focus:border-brand-800 transition-colors bg-transparent resize-none" placeholder="Se quiser, adiante alguns detalhes do seu projeto..."></textarea>
+                    </div>
+                    <button type="submit" class="bg-brand-900 text-white w-full md:w-auto px-10 py-4 uppercase tracking-widest text-xs hover:bg-brand-700 transition-colors duration-300 flex items-center justify-center gap-2">
+                        <i class="ph-fill ph-whatsapp-logo text-lg"></i> Enviar para WhatsApp
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5541984586576?text=Olá%20Stefany!%20Acessei%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition-all duration-300 z-[100] group flex items-center justify-center animate-bounce hover:animate-none">
+        <i class="ph-fill ph-whatsapp-logo text-3xl md:text-4xl"></i>
+        <span class="absolute right-full mr-4 bg-white text-brand-900 text-xs font-semibold px-3 py-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none hidden md:block">
+            Fale connosco!
+        </span>
+    </a>
+
+
+    <footer class="bg-brand-900 py-10 text-brand-200 border-t border-brand-800/50">
+        <div class="container mx-auto px-6 md:px-12 flex flex-col items-center justify-center space-y-4 text-sm font-light">
+            <span class="font-serif text-xl text-white tracking-widest text-center">S. Prodossimo</span>
+            <div class="text-center text-xs text-brand-400">
+                <p>&copy; 2026 Stefany Prodossimo Arquitetura. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Scroll Suave
+        document.querySelectorAll('.scroll-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); 
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // 2. Efeito Menu
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'py-2');
+                navbar.classList.remove('py-4', 'bg-transparent');
+                navLinks.forEach(link => { link.classList.remove('text-white', 'mix-blend-difference'); link.classList.add('text-brand-800'); });
+                mobileBtn.classList.remove('text-white', 'mix-blend-difference'); mobileBtn.classList.add('text-brand-900');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-2');
+                navbar.classList.add('py-4', 'bg-transparent');
+                navLinks.forEach(link => { link.classList.add('text-white', 'mix-blend-difference'); link.classList.remove('text-brand-800'); });
+                mobileBtn.classList.add('text-white', 'mix-blend-difference'); mobileBtn.classList.remove('text-brand-900');
+            }
+        });
+
+        // 3. Menu Mobile
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // 4. Animação Hero
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+
+        function flipToNextSlide() {
+            if(slides.length <= 1) return; 
+
+            const current = slides[currentSlide];
+            const nextIndex = (currentSlide + 1) % slides.length;
+            const next = slides[nextIndex];
+
+            next.classList.remove('hidden');
+            next.style.zIndex = 10;
+            
+            current.style.zIndex = 20;
+            current.classList.add('page-turn-out');
+
+            setTimeout(() => {
+                current.classList.remove('page-turn-out');
+                current.classList.add('hidden');
+                current.style.zIndex = 10; 
+                currentSlide = nextIndex;
+            }, 1500);
+        }
+        setInterval(flipToNextSlide, 5000);
+
+        // 5. Carrossel
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('projetos-carousel');
+            const scrollAmount = carousel.querySelector('.carousel-item').clientWidth + 24; 
+            carousel.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+        }
+
+        // 6. Formulário do WhatsApp
+        document.getElementById('form-whatsapp').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            const nome = document.getElementById('nome-cliente').value;
+            const email = document.getElementById('email-cliente').value;
+            const assunto = document.getElementById('assunto-cliente').value;
+            const mensagem = document.getElementById('mensagem-cliente').value;
+            
+            const seuNumeroWhatsApp = "5541984586576"; 
+            
+            const textoMensagem = `Olá Stefany! Acessei seu site e gostaria de conversar.\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*Interesse:* ${assunto}\n*Mensagem:* ${mensagem}`;
+            const urlWhatsApp = `https://wa.me/${seuNumeroWhatsApp}?text=${encodeURIComponent(textoMensagem)}`;
+            
+            window.open(urlWhatsApp, '_blank');
+            document.getElementById('form-whatsapp').reset();
+        });
+    </script>
+</body>
+</html>
